@@ -203,4 +203,4 @@
 
 ---
 
-> ### Amélioration pour plus tard, avec cette API, seul le changement de la valeur de base_currency dooit provoquer l'appel à l'API, car pour une base corrency donnée, elle renvoies un tableau de convertions pour toutes les autres devises.
+> ### Amélioration pour plus tard, avec cette API, seul le changement de la valeur de base_currency devrait provoquer l'appel à l'API, car pour une base_currency donnée, elle renvoie un tableau de convertions pour toutes les autres devises.
