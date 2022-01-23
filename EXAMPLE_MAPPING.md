@@ -75,7 +75,7 @@
 - To a pour valeur EUR
 - Montant a pour valeur 0
 - le champ est à l'état valide
-- Result affiche la valeur du champ montant converti
+- Result affiche la valeur du champ montant (0)
 
 > When :
 
@@ -96,7 +96,7 @@
 - To a pour valeur EUR
 - Montant a pour valeur 0
 - le champ est à l'état valide
-- Result affiche la valeur du champ montant converti
+- Result affiche la valeur du champ montant (0)
 
 > When :
 
@@ -109,13 +109,13 @@
 - l'appel API ne s'effectue pas
 - Result affiche la valeur zero
 
-### Scenario : devise d'origine et de destination en EUR avec montant à 10p, modification du montant à 10 (correction)
+### Scenario : devise d'origine et de destination en EUR avec montant à pp10, modification du montant à 10 (correction)
 
 > Given :
 
 - From a pour valeur EUR
 - To a pour valeur CHF
-- Montant a pour valeur 10p
+- Montant a pour valeur pp10
 - le champ est à l'état invalide
 - Result affiche la valeur zero
 
@@ -127,8 +127,8 @@
 
 - Le champ Montant met à jour avec la valeur 10
 - le champ est à l'état valide
-- l'appel API ne s'effectue pas (car on n'a pas changé de devise)
-- Result affiche la valeur du champ montant (10)
+- l'appel API s'effectue
+- Result affiche la valeur du champ montant converti
 
 ### Scenario : devise d'origine en EUR avec montant à 10p, modification de la devise de destination de EUR en CHF (erreur)
 
@@ -200,6 +200,27 @@
 - le champ est à l'état valide
 - l'appel API s'effectue car la base currenty a été modifiée et From et To sont différents
 - Result affiche le loader puis le montant converti
+
+### Scenario : From = CHF, To = EUR, le montant est '5', change le montant pour zero
+
+> Given :
+
+- From a pour valeur EUR
+- To a pour valeur CHF
+- Montant a pour valeur 5
+- le champ est à l'état valide
+- Result affiche le loader puis le montant converti
+
+> When :
+
+- puis je change la valeur de montant à 0
+
+> Then :
+
+- Montant a pour valeur 0
+- le champ est à l'état reste valide
+- l'appel API ne s'effectue pas
+- Result affiche la valeur zero
 
 ---
 
